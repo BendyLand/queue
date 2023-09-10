@@ -9,7 +9,7 @@ namespace Queues
         public Node<T> NextNode
         { get; set; }
 
-        public Node(T value, Node<T> nextNode)
+        public Node(T value, Node<T> nextNode = null)
         {
             Value = value;
             NextNode = nextNode;
