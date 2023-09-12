@@ -28,6 +28,23 @@ class Queue
         end
     end
 
+    def dequeue()
+        if @size > 0
+            item_to_remove = @head
+            puts "#{item_to_remove.value} is served!"
+            if @size == 1
+                @head = nil
+                @tail = nil
+            else
+                @head = @head.next_node
+            end
+            @size -= 1
+            return item_to_remove.value
+        else
+            puts "The queue is totally empty!"
+        end
+    end
+
     def has_space()
         if @max_size == nil
             return true
