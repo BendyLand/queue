@@ -45,6 +45,31 @@ namespace Queues
             }
         }
 
+        public T Dequeue()
+        {
+            if (Size > 0)
+            {
+                Node<T> itemToRemove = Head;
+                Console.WriteLine($"{Convert.ToString(itemToRemove.Value)} is served!");
+                if (Size == 1)
+                {
+                    Head = null;
+                    Tail = null;
+                }
+                else
+                {
+                    Head = Head.NextNode;
+                }
+                Size--;
+                return itemToRemove.Value;
+            }
+            else
+            {
+                Console.WriteLine("The queue is totally empty");
+                return default(T);
+            }
+        }
+
         public T Peek()
         {
             if (Size > 0)
