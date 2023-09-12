@@ -21,6 +21,30 @@ namespace Queues
             Size = 0;
         }
 
+        public void Enqueue(T value)
+        {
+            if (HasSpace())
+            {
+                Node<T> itemToAdd = new Node<T>(value);
+                Console.WriteLine($"Adding {Convert.ToString(itemToAdd.Value)} to the queue!");
+                if (IsEmpty())
+                {
+                    Head = itemToAdd;
+                    Tail = itemToAdd;
+                }
+                else
+                {
+                    Tail.NextNode = itemToAdd;
+                    Tail = itemToAdd;
+                }
+                Size++;
+            }
+            else
+            {
+                Console.WriteLine("Sorry, no more room!");
+            }
+        }
+
         public T Peek()
         {
             if (Size > 0)
