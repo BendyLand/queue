@@ -11,6 +11,23 @@ class Queue
         @size = 0
     end
 
+    def enqueue(value)
+        if self.has_space()
+            item_to_add = Node.new(value)
+            puts "Adding #{item_to_add.value} to the queue!"
+            if self.is_empty()
+                @head = item_to_add
+                @tail = item_to_add
+            else
+                @tail.next_node = item_to_add
+                @tail = item_to_add
+            end
+            @size += 1
+        else
+            puts "Sorry, no more room!"
+        end
+    end
+
     def has_space()
         if @max_size == nil
             return true
