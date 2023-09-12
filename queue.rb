@@ -45,6 +45,14 @@ class Queue
         end
     end
 
+    def peek()
+        if @size > 0
+            return @head.value
+        else
+            puts "No orders waiting."
+        end
+    end
+
     def has_space()
         if @max_size == nil
             return true
