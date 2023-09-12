@@ -64,5 +64,4 @@ class Queue
     def is_empty()
         @size == 0
     end
-
 end
