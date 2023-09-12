@@ -1,3 +1,5 @@
+using System;
+
 namespace Queues
 {
     class Queue<T>
@@ -6,7 +8,7 @@ namespace Queues
         { get; set; }
         public Node<T> Tail
         { get; set; }
-        public int MaxSize
+        public int? MaxSize
         { get; }
         public int Size
         { get; private set; }
@@ -15,8 +17,37 @@ namespace Queues
         {
             Head = null;
             Tail = null;
-            MaxSize = (int)maxSize;
+            MaxSize = maxSize;
             Size = 0;
+        }
+
+        public T Peek()
+        {
+            if (Size > 0)
+            {
+                return Head.Value;
+            }
+            else
+            {
+                Console.WriteLine("No orders waiting.");
+                return default(T);
+            }
+        }
+        public bool HasSpace()
+        {
+            if (MaxSize == null)
+            {
+                return true;
+            }
+            else
+            {
+                return MaxSize > Size;
+            }
+        }
+
+        public bool IsEmpty()
+        {
+            return Size == 0;
         }
     }
 }
