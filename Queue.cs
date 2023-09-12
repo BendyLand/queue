@@ -1,0 +1,7 @@
+namespace Queues
+{
+    class Queue
+    {
+        
+    }
+}
